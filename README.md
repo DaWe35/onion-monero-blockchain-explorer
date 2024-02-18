@@ -188,8 +188,8 @@ version: '3'
 services:
   monerod:
     image: sethsimmons/simple-monerod:latest
-    restart: unless-stopped
     container_name: monerod
+    restart: unless-stopped
     volumes:
       - xmrdata:/home/monero/.bitmonero
     ports:
@@ -202,10 +202,10 @@ services:
       - "--no-igd"
       - "--enable-dns-blocklist"
       - "--prune-blockchain"
+      - "--sync-pruned-blocks"
 
   explore:
-    image: xmrblocks:latest
-    build: ./onion-monero-blockchain-explorer
+    image: dawe35/xmrblocks:latest
     container_name: explore
     restart: unless-stopped
     volumes:
@@ -214,8 +214,8 @@ services:
       - 8081:8081
     command: ["./xmrblocks --daemon-url=monerod:18089 --enable-json-api --enable-autorefresh-option --enable-emission-monitor --enable-pusher"]
 
-  volumes:
-    xmrdata:
+volumes:
+  xmrdata:
 ```
 
 To build this image, run the following:

@@ -17,6 +17,7 @@ services:
       - "--enable-dns-blocklist"
       - "--prune-blockchain"
       - "--sync-pruned-blocks"
+      - "--out-peers=64"
 
   explore:
     image: dawe35/xmrblocks:latest

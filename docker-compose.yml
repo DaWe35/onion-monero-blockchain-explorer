@@ -4,6 +4,7 @@ services:
     image: sethsimmons/simple-monerod:latest
     container_name: monerod
     restart: unless-stopped
+    stop_grace_period: 1m
     volumes:
       - xmrdata:/home/monero/.bitmonero
     ports:

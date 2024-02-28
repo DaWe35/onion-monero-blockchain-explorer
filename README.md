@@ -201,8 +201,6 @@ services:
       - "--public-node"
       - "--no-igd"
       - "--enable-dns-blocklist"
-      - "--prune-blockchain"
-      - "--sync-pruned-blocks"
 
   explore:
     image: dawe35/xmrblocks:latest

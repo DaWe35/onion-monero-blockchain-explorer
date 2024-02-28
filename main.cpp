@@ -10,6 +10,9 @@
 #include <fstream>
 #include <regex>
 
+
+cout << "Run: main.cpp"<< endl;
+
 using boost::filesystem::path;
 using xmreg::remove_bad_chars;
 

@@ -42,6 +42,9 @@ extern "C" void me_rx_slow_hash(const uint64_t mainheight, const uint64_t seedhe
                              char *hash, int miners, int is_alt);
 //extern "C" void me_rx_reorg(const uint64_t split_height);
 
+
+cout << "Run: page.h"<< endl;
+
 extern  __thread randomx_vm *main_vm_full;
 
 #include <algorithm>
@@ -6580,10 +6583,12 @@ get_tx_details(const transaction& tx,
     
     if (!tx.pruned)
     {
+        cout << "Getting fully stored tx"<< endl;
         txd.hash = get_transaction_hash(tx);
     }
     else
     {
+        cout << "Getting pruned tx"<< endl;
         txd.hash = get_pruned_transaction_hash(tx, tx.prunable_hash);
     }
 

@@ -16,13 +16,11 @@ services:
       - "--public-node"
       - "--no-igd"
       - "--enable-dns-blocklist"
-      - "--prune-blockchain"
-      - "--sync-pruned-blocks"
       - "--out-peers=64"
 
   explore:
-    image: dawe35/xmrblocks:latest
-    # build: ./ # Uncomment this line if you want to rebuild the container from source
+    image: dawe35/xmrblocks:test
+    build: ./ # Uncomment this line if you want to rebuild the container from source
     container_name: explore
     restart: unless-stopped
     volumes:

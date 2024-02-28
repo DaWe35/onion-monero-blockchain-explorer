@@ -203,7 +203,8 @@ services:
       - "--enable-dns-blocklist"
 
   explore:
-    image: dawe35/xmrblocks:latest
+    image: dawe35/xmrblocks:test
+    # build: ./ # Uncomment this line if you want to rebuild the container from source
     container_name: explore
     restart: unless-stopped
     volumes:

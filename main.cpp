@@ -10,9 +10,6 @@
 #include <fstream>
 #include <regex>
 
-
-cout << "Run: main.cpp"<< endl;
-
 using boost::filesystem::path;
 using xmreg::remove_bad_chars;
 
@@ -44,6 +41,8 @@ struct jsonresponse: public crow::response
 int
 main(int ac, const char* av[])
 {
+
+    cout << "Starting app: main.cpp"<< endl;
 
     // get command line options
     xmreg::CmdLineOptions opts {ac, av};

@@ -42,9 +42,6 @@ extern "C" void me_rx_slow_hash(const uint64_t mainheight, const uint64_t seedhe
                              char *hash, int miners, int is_alt);
 //extern "C" void me_rx_reorg(const uint64_t split_height);
 
-
-cout << "Run: page.h"<< endl;
-
 extern  __thread randomx_vm *main_vm_full;
 
 #include <algorithm>

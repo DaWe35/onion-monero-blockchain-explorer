@@ -47,7 +47,6 @@ WORKDIR /root
 ARG NPROC
 RUN git clone --recursive --single-branch --branch ${MONERO_BRANCH} https://github.com/monero-project/monero.git \
     && cd monero \
-    && git checkout c6ff0d38207d30a90dba72767ef7ca63098d6a79 \
     && test -z "$NPROC" && nproc > /nproc || echo -n "$NPROC" > /nproc && make -j"$(cat /nproc)"
 
 

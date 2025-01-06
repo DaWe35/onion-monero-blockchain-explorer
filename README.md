@@ -181,45 +181,7 @@ Staring in non-ssl mode
 
 ### Docker Compose example
 
-The explorer can also be built and run using Docker Compose, i.e.:
-
-```yaml
-version: '3'
-services:
-  monerod:
-    image: sethsimmons/simple-monerod:latest
-    container_name: monerod
-    restart: unless-stopped
-    volumes:
-      - xmrdata:/home/monero/.bitmonero
-    ports:
-      - 18080:18080
-      - 18089:18089
-    depends_on:
-        - explore
-    command:
-      - "--rpc-restricted-bind-ip=0.0.0.0"
-      - "--rpc-restricted-bind-port=18089"
-      - "--public-node"
-      - "--no-igd"
-      - "--enable-dns-blocklist"
-
-  explore:
-    image: dawe35/xmrblocks:test
-    # build: ./ # Uncomment this line if you want to rebuild the container from source
-    container_name: explore
-    restart: unless-stopped
-    volumes:
-      - xmrdata:/home/monero/.bitmonero
-    ports:
-      - 8081:8081
-    command: ["./xmrblocks --daemon-url=monerod:18089 --enable-json-api --enable-autorefresh-option --enable-emission-monitor --enable-pusher"]
-
-volumes:
-  xmrdata:
-```
-
-To build this image, run the following:
+The explorer can also be built and run using Docker Compose, see example in `docker-compose.yml`. This example uses a prebuilt explorer image. If you want to build the image from source, uncomment the `build: ./` line in the `explore` service or run the following:
 
 ```bash
 git clone https://github.com/moneroexamples/onion-monero-blockchain-explorer.git

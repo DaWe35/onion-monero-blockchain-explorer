@@ -2,7 +2,7 @@
 FROM ubuntu:20.04 as builder
 
 # Set Monero branch/tag to be used for monerod compilation
-ARG MONERO_BRANCH=v0.18.2.2
+ARG MONERO_BRANCH=v0.18.3.4
 
 # Added DEBIAN_FRONTEND=noninteractive to workaround tzdata prompt on installation
 ENV DEBIAN_FRONTEND="noninteractive"
@@ -44,14 +44,14 @@ WORKDIR /root
 
 # Clone and compile monerod with all available threads
 ARG NPROC
-RUN git clone --recursive --branch ${MONERO_BRANCH} https://github.com/monero-project/monero.git \
+RUN git clone --recursive --single-branch --branch ${MONERO_BRANCH} https://github.com/monero-project/monero.git \
     && cd monero \
     && test -z "$NPROC" && nproc > /nproc || echo -n "$NPROC" > /nproc && make -j"$(cat /nproc)" release-static
 
 # Clone specific version of blockchain explorer
 RUN git clone https://github.com/monero-project/monero-gui.git \
     && cd monero-gui \
-    && git checkout v0.18.2.2
+    && git checkout v0.18.3.4
 
 # Copy and cmake/make xmrblocks with all available threads
 COPY . /root/onion-monero-blockchain-explorer/

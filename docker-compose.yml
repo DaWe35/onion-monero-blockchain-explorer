@@ -10,8 +10,6 @@ services:
     ports:
       - 18080:18080
       - 18089:18089
-    depends_on:
-        - explore
     command:
       - "--rpc-restricted-bind-ip=0.0.0.0"
       - "--rpc-restricted-bind-port=18089"
@@ -25,6 +23,8 @@ services:
     # build: ./ # Uncomment this line if you want to rebuild the container from source
     container_name: explore
     restart: unless-stopped
+    depends_on:
+      - monerod
     volumes:
       - xmrdata:/home/monero/.bitmonero
     ports:

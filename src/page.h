@@ -6580,10 +6580,12 @@ get_tx_details(const transaction& tx,
     
     if (!tx.pruned)
     {
+        cout << "Getting fully stored tx hash: " << endl;
         txd.hash = get_transaction_hash(tx);
     }
     else
     {
+        cout << "Getting pruned tx hash: " << endl;
         txd.hash = get_pruned_transaction_hash(tx, tx.prunable_hash);
     }
 

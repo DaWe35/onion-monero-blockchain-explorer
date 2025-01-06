@@ -42,6 +42,8 @@ int
 main(int ac, const char* av[])
 {
 
+    cout << "Starting app: main.cpp"<< endl;
+
     // get command line options
     xmreg::CmdLineOptions opts {ac, av};
 

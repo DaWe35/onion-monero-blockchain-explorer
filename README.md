@@ -188,8 +188,8 @@ version: '3'
 services:
   monerod:
     image: sethsimmons/simple-monerod:latest
-    restart: unless-stopped
     container_name: monerod
+    restart: unless-stopped
     volumes:
       - xmrdata:/home/monero/.bitmonero
     ports:
@@ -205,8 +205,8 @@ services:
       - "--enable-dns-blocklist"
 
   explore:
-    image: xmrblocks:latest
-    build: ./onion-monero-blockchain-explorer
+    image: dawe35/xmrblocks:test
+    # build: ./ # Uncomment this line if you want to rebuild the container from source
     container_name: explore
     restart: unless-stopped
     volumes:
